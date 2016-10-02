@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+# Update trusted plugins and themes on all WordPress websites
+#
+
+for path in $(cat /usr/local/sitelist.md)
+do
+  if test -e $path/wp-config.php; then
+    cd $path/public_html
+    site=$(basename $path)
+    echo $site
+
+    # Update WordPress
+    wp core update
+
+    # Update trusted plugins
+    wp plugin update akismet jetpack vaultpress wordpress-importer wp-super-cache
+
+    # Update trusted themes
+    wp theme update twentyfifteen twentyfourteen
+    
+    echo
+  fi
+done
+

@@ -1,0 +1,23 @@
+#!/bin/bash
+#
+# Evaluate command on all WordPress sites
+#
+
+if [ -z $1 ]
+then
+  for path in $(cat /usr/local/sitelist.md)
+  do
+    if [ -e $path/wp-config.php ]
+    then
+      cd $path/public_html
+      site=$(basename $path)
+      echo $site
+      eval $1
+      echo
+    fi
+  done
+else
+  echo 'Usage: wpg "<cmd(s)>"'
+  exit 1
+fi
+

@@ -1,0 +1,9 @@
+#!/bin/sh
+#
+# Flush apt-get repositories
+#
+
+apt-get autoremove
+apt-get autoclean
+apt-get clean
+
