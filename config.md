@@ -1,5 +1,6 @@
-
 `sudo -v`
+
+## Access
 
 #### `sudo visudo`
 
@@ -42,16 +43,18 @@ Add `mbeall ALL=(ALL) NOPASSWD: ALL` to bottom
 
 #### Test SSH login from local machine
 
-#### Reconfigure server time
-
-`sudo dpkg-reconfigure tzdata`
-
 #### Install `fail2ban`
 
     sudo apt-get install fail2ban
     sudo ufw allow ssh
     sudo ufw enable
     sudo ufw logging on
+
+## User
+
+#### Reconfigure server time
+
+`sudo dpkg-reconfigure tzdata`
 
 #### Configure default home folders
 
@@ -76,7 +79,15 @@ Add `mbeall ALL=(ALL) NOPASSWD: ALL` to bottom
     sudo cp -p dotfiles/.bin/ubuntu/* /usr/local/bin/
     cd ~
 
-#### Update debian software
+#### Configure login message
+
+    sudo chmod -x /etc/update-motd.d/10-help-text
+    sudo chmod -x /etc/update-motd.d/90-updates-available
+
+    sudo apt-get install figlet
+    sudo cp -p ~/private/dotfiles/update-motd.d/99-footer /etc/update-motd.d/
+
+## Updates
 
     sudo apt-get update
     sudo apt-get upgrade -y
@@ -93,14 +104,6 @@ Add `mbeall ALL=(ALL) NOPASSWD: ALL` to bottom
     sudo apt-get upgrade -y
     why-reboot
 
-#### Configure login message
-
-    sudo chmod -x /etc/update-motd.d/10-help-text
-    sudo chmod -x /etc/update-motd.d/90-updates-available
-
-    sudo apt-get install figlet
-    sudo cp -p ~/private/dotfiles/update-motd.d/99-footer /etc/update-motd.d/
-
 #### Edit `50unattended-upgrade`
 
 `sudo vi /etc/apt/apt.conf.d/50unattended-upgrades`
@@ -108,6 +111,12 @@ Add `mbeall ALL=(ALL) NOPASSWD: ALL` to bottom
 - Uncomment `"${distro_id}:${distro_codename}-updates";`
 - Uncomment and edit `Unattended-Upgrade::Mail "admin@starverte.com";`
 - Uncomment `Unattended-Upgrade::MailOnlyOnError "true";`
+
+#### Install other `apt` software
+
+`sudo apt-get install apticron apt-listchanges`
+
+## Email
 
 #### Install outgoing email server
 
@@ -117,6 +126,7 @@ Add `mbeall ALL=(ALL) NOPASSWD: ALL` to bottom
 - System mail name: [HOSTNAME.fortcollinscreative.com]
 
 #### Configure outgoing email server
+
 `sudo vi /etc/postfix/main.cf`
 
     myhostname = HOSTNAME.fortcollinscreative.com
