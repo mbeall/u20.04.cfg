@@ -27,3 +27,6 @@ alias path='echo -e ${PATH//:/\\n}'
 # Upgrades in one step
 alias up='apt-get update && sudo apt-get upgrade -y'
 
+# Always run docker in sudo
+alias docker='sudo docker '
+
