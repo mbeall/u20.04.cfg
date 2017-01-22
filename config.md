@@ -173,3 +173,7 @@ Add `mbeall ALL=(ALL) NOPASSWD: ALL` to bottom
 
     sudo systemctl restart postfix
 
+#### Install utilities
+
+    sudo apt install secure-delete
+
