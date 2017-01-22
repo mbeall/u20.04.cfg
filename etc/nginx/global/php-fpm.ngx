@@ -7,10 +7,15 @@ location ~ [^/]\.php(/|$) {
     return 404;
   }
 
-  include fastcgi_params;
-  fastcgi_index index.php;
+  # PHP 5.x
+#  include fastcgi_params;  
+#  fastcgi_index index.php;
+#  fastcgi_pass unix:/var/run/php5-fpm.sock;
+
+  # PHP 7
+  include snippets/fastcgi-php.conf;
+  fastcgi_pass unix:/var/run/php7-fpm.sock;
+
   fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-#  fastcgi_intercept_errors on;
-  fastcgi_pass unix:/var/run/php5-fpm.sock;
 }
 
