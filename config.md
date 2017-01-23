@@ -176,4 +176,18 @@ Add `mbeall ALL=(ALL) NOPASSWD: ALL` to bottom
 #### Install utilities
 
     sudo apt install secure-delete
+    sudo apt install mailutils
+
+#### Crontab
+
+`crontab -e`
+
+    00 01  *   *   *  wpg-update-trusted &> /dev/null
+    30 01  *   *   1  fccg-sizes &> /dev/null
+    00 02  *   *   2  wpg-available-updates &> /dev/null
+    30 03  *   *   3  wpg-cleanup &> /dev/null
+
+`sudo crontab -e`
+
+    00  03  01   *    *    fccg-backup
 
