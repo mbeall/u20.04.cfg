@@ -9,7 +9,7 @@ then
   do
     if [ -e $path/wp-config.php ]
     then
-      cd $path/public_html
+      cd $path/html
       site=$(basename $path)
       echo $site
       eval $1

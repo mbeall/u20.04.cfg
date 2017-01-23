@@ -3,7 +3,7 @@
 # Update trusted plugins and themes on all WordPress websites
 #
 
-for path in $(cat /usr/local/wp-sites)
+for path in $(cat /usr/local/sitelist.md)
 do
   if test -e $path/wp-config.php; then
     cd $path/html
