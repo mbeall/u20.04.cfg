@@ -3,7 +3,7 @@
 # Flush apt-get repositories
 #
 
-apt-get autoremove
+apt-get autoremove -y
 apt-get autoclean
 apt-get clean
 
