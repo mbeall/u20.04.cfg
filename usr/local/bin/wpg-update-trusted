@@ -12,6 +12,7 @@ do
 
     # Update WordPress
     wp core update
+    wp core update-db
 
     # Update trusted plugins
     wp plugin update akismet jetpack vaultpress wp-super-cache
