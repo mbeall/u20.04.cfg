@@ -173,10 +173,13 @@ Add `mbeall ALL=(ALL) NOPASSWD: ALL` to bottom
 
     sudo systemctl restart postfix
 
+## Misc
+
 #### Install utilities
 
     sudo apt install secure-delete
     sudo apt install mailutils
+    sudo apt install apticron
 
 #### Crontab
 
