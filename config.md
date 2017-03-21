@@ -173,6 +173,30 @@ Add `mbeall ALL=(ALL) NOPASSWD: ALL` to bottom
 
     sudo systemctl restart postfix
 
+## Install LEMP
+
+#### Install Nginx
+
+    sudo apt-get install nginx
+
+#### Install MySQL
+
+    sudo apt-get install mysql-server
+
+    sudo mysql_secure_installation
+
+#### Install PHP
+
+    sudo apt-get install php-fpm php-mysql
+
+`sudo vi /etc/php/7.0/fpm/php.ini`
+
+    cgi.fix_pathinfo=0
+
+    sudo systemctl restart php7.0-fpm
+
+    sudo apt-get install php-gd
+
 ## Misc
 
 #### Install utilities
