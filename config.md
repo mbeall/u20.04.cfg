@@ -116,6 +116,11 @@ Add `mbeall ALL=(ALL) NOPASSWD: ALL` to bottom
 
 `sudo apt-get install apticron apt-listchanges`
 
+`sudo vi /etc/apticron/apticron.conf`
+
+- `EMAIL="admin@starverte.com"`
+- `CUSTOM_SUBJECT='[apticron] $SYSTEM: Update(s) available'`
+
 ## Email
 
 #### Install outgoing email server
