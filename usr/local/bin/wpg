@@ -5,6 +5,9 @@
 
 if [ -z $1 ]
 then
+  echo 'Usage: wpg "<cmd(s)>"'
+  exit 1
+else
   for path in $(cat /usr/local/sitelist.md)
   do
     if [ -e $path/wp-config.php ]
@@ -12,12 +15,9 @@ then
       cd $path/html
       site=$(basename $path)
       echo $site
-      eval $1
+      wp $*
       echo
     fi
   done
-else
-  echo 'Usage: wpg "<cmd(s)>"'
-  exit 1
 fi
 
