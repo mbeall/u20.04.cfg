@@ -193,14 +193,21 @@ Add `mbeall ALL=(ALL) NOPASSWD: ALL` to bottom
 #### Install PHP
 
     sudo apt-get install php-fpm php-mysql
+    sudo apt-get install php-gd
+
+#### Edit `php.ini`
 
 `sudo vi /etc/php/7.0/fpm/php.ini`
 
     cgi.fix_pathinfo=0
+    post_max_size = 32M
+    upload_max_filesize = 32M
+    
+    ; Uncode theme recommendations
+    max_execution_time = 120
+    max_input_vars = 3000
 
-    sudo systemctl restart php7.0-fpm
-
-    sudo apt-get install php-gd
+`sudo systemctl restart php7.0-fpm`
 
 ## Misc
 
