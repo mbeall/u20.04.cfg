@@ -183,6 +183,12 @@ Add `mbeall ALL=(ALL) NOPASSWD: ALL` to bottom
 #### Install Nginx
 
     sudo apt-get install nginx
+    
+#### Edit `nginx.conf`
+
+`sudo vi /etc/nginx/nginx.conf`
+
+    client_max_body_size 32M;
 
 #### Install MySQL
 
