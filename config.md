@@ -189,6 +189,8 @@ Add `mbeall ALL=(ALL) NOPASSWD: ALL` to bottom
 `sudo vi /etc/nginx/nginx.conf`
 
     client_max_body_size 32M;
+    
+`sudo systemctl restart nginx`
 
 #### Install MySQL
 
