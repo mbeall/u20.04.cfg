@@ -224,6 +224,8 @@ Add `mbeall ALL=(ALL) NOPASSWD: ALL` to bottom
     sudo apt install secure-delete
     sudo apt install mailutils
     sudo apt install apticron
+    
+    wp package install trepmal/wp-revisions-cli
 
 #### Crontab
 
