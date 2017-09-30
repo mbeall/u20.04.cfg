@@ -13,6 +13,10 @@ do
     site=$(basename $path)
     echo $site
 
+    # Delete inactive plugins
+    wp plugin delete $(wp plugin list --status=inactive --field=name)
+    wp plugin install akismet jetpack vaultpress wp-super-cache
+  
     # Keep last 5 post revisions and delete the rest
     wp revisions clean 5
 
