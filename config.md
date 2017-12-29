@@ -201,7 +201,7 @@ Add `mbeall ALL=(ALL) NOPASSWD: ALL` to bottom
 #### Install PHP
 
     sudo apt-get install php-fpm php-mysql
-    sudo apt-get install php-gd
+    sudo apt-get install php-gd php-imagick
 
 #### Edit `php.ini`
 
