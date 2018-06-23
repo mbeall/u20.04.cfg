@@ -190,6 +190,35 @@ Add `mbeall ALL=(ALL) NOPASSWD: ALL` to bottom
 
     client_max_body_size 32M;
     
+    gzip on;
+    gzip_comp_level 5;
+    gzip_min_length 256;
+    gzip_types
+      application/atom+xml
+      application/javascript
+      application/json
+      application/rss+xml
+      application/vnd.ms-fontobject
+      application/x-font-ttf
+      application/x-font-opentype
+      application/x-font-truetype
+      application/x-javascript
+      application/x-web-app-manifest+json
+      application/xhtml+xml
+      application/xml
+      font/eot
+      font/opentype
+      font/otf
+      image/svg+xml
+      image/x-icon
+      image/vnd.microsoft.icon
+      text/css
+      text/plain
+      text/javascript
+      text/x-component;
+
+    gzip_disable "MSIE [1-6]\.(?!.*SV1)";
+    
 `sudo systemctl restart nginx`
 
 #### Install MySQL
