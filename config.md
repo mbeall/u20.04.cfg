@@ -217,7 +217,9 @@ Add `mbeall ALL=(ALL) NOPASSWD: ALL` to bottom
       text/javascript
       text/x-component;
 
-    gzip_disable "MSIE [1-6]\.(?!.*SV1)";
+    gzip_vary on;
+    gzip_disable "msie6";
+    gunzip on;
     
 `sudo systemctl restart nginx`
 
