@@ -1,12 +1,11 @@
 # Based on https://mozilla.github.io/server-side-tls/ssl-config-generator/?server=nginx-1.10.1&openssl=1.0.1f&hsts=yes&profile=intermediate
 # certs sent to the client in SERVER HELLO are concatenated in ssl_certificate
-ssl on;
 ssl_session_timeout 1d;
 ssl_session_cache shared:SSL:50m;
 #ssl_session_tickets off;
 
 # Diffie-Hellman parameter for DHE ciphersuites, recommended 2048 bits
-ssl_dhparam /etc/nginx/dhparams.pem;
+ssl_dhparam /etc/nginx/global/dhparam.pem;
 
 # intermediate configuration. tweak to your needs.
 ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
