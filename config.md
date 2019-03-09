@@ -253,7 +253,9 @@ Select option `2` when prompted.
 #### Install PHP
 
     sudo apt-get install php-fpm php-mysql
-    sudo apt-get install php-gd php-imagick
+    sudo apt-get install php-gd php-imagick php-cli 
+    sudo apt-get install composer
+    sudo apt-get install php-curl php-xml
 
 #### Edit `php.ini`
 
