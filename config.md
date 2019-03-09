@@ -223,6 +223,27 @@ Add `mbeall ALL=(ALL) NOPASSWD: ALL` to bottom
     
 `sudo systemctl restart nginx`
 
+#### Install Certbot
+
+    sudo apt-get update
+    sudo apt-get install software-properties-common
+    sudo add-apt-repository universe
+    sudo add-apt-repository ppa:certbot/certbot
+    sudo apt-get update
+    sudo apt-get install certbot python-certbot-nginx
+
+#### Configure Certbot for default domain
+
+`sudo vi /etc/nginx/sites-available/default`
+
+    server_name HOSTNAME.fortcollinscreative.com www.HOSTNAME.fortcollinscreative.com;
+
+`sudo systemctl reload nginx`
+
+`sudo certbot --nginx -d HOSTNAME.fortcollinscreative.com -d www.HOSTNAME.fortcollinscreative.com`
+
+Select option `2` when prompted.
+
 #### Install MySQL
 
     sudo apt-get install mysql-server
