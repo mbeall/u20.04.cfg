@@ -24,6 +24,7 @@ if ($http_cookie ~* "comment_author|wordpress_[a-f0-9]+|wp-postpass|wordpress_lo
 
 # Use cached or actual file if they exists, otherwise pass request to WordPress
 location / {
+  expires 8d;
   try_files /wp-content/cache/supercache/$http_host/$scheme$cache_uri/index.html $uri $uri/ /index.php?$args ;
 }
   
