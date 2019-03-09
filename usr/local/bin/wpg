@@ -8,16 +8,18 @@ then
   echo 'Usage: wpg "<cmd(s)>"'
   exit 1
 else
-  for path in $(cat /usr/local/sitelist.md)
+  for user in $(ls /home)
   do
-    if [ -e $path/wp-config.php ]
-    then
-      cd $path/html
-      site=$(basename $path)
-      echo $site
-      wp $*
-      echo
-    fi
+    for site in $(ls /home/$user/public)
+    do
+      if [ -e /home/$user/public/$site/wp-config.php ]; then
+        cd /home/$user/public/$site/html
+        echo $site
+        wp $*
+        cd
+        echo
+      fi
+    done
   done
 fi
 
