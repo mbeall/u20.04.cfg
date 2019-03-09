@@ -183,6 +183,66 @@ Add `mbeall ALL=(ALL) NOPASSWD: ALL` to bottom
 #### Install Nginx
 
     sudo apt-get install nginx
+    
+#### Edit `nginx.conf`
+
+`sudo vi /etc/nginx/nginx.conf`
+
+    client_max_body_size 32M;
+    
+    gzip on;
+    gzip_comp_level 5;
+    gzip_min_length 256;
+    gzip_types
+      application/atom+xml
+      application/javascript
+      application/json
+      application/rss+xml
+      application/vnd.ms-fontobject
+      application/x-font-ttf
+      application/x-font-opentype
+      application/x-font-truetype
+      application/x-javascript
+      application/x-web-app-manifest+json
+      application/xhtml+xml
+      application/xml
+      font/eot
+      font/opentype
+      font/otf
+      image/svg+xml
+      image/x-icon
+      image/vnd.microsoft.icon
+      text/css
+      text/plain
+      text/javascript
+      text/x-component;
+
+    gzip_vary on;
+    gzip_disable "msie6";
+    gunzip on;
+    
+`sudo systemctl restart nginx`
+
+#### Install Certbot
+
+    sudo apt-get update
+    sudo apt-get install software-properties-common
+    sudo add-apt-repository universe
+    sudo add-apt-repository ppa:certbot/certbot
+    sudo apt-get update
+    sudo apt-get install certbot python-certbot-nginx
+
+#### Configure Certbot for default domain
+
+`sudo vi /etc/nginx/sites-available/default`
+
+    server_name HOSTNAME.fortcollinscreative.com www.HOSTNAME.fortcollinscreative.com;
+
+`sudo systemctl reload nginx`
+
+`sudo certbot --nginx -d HOSTNAME.fortcollinscreative.com -d www.HOSTNAME.fortcollinscreative.com`
+
+Select option `2` when prompted.
 
 #### Install MySQL
 
@@ -193,22 +253,43 @@ Add `mbeall ALL=(ALL) NOPASSWD: ALL` to bottom
 #### Install PHP
 
     sudo apt-get install php-fpm php-mysql
+    sudo apt-get install php-gd php-imagick php-cli 
+    sudo apt-get install composer
+    sudo apt-get install php-curl php-xml
+
+#### Edit `php.ini`
 
 `sudo vi /etc/php/7.0/fpm/php.ini`
 
     cgi.fix_pathinfo=0
+    post_max_size = 32M
+    upload_max_filesize = 32M
+    
+    ; Uncode theme recommendations
+    max_execution_time = 120
+    max_input_vars = 3000
 
-    sudo systemctl restart php7.0-fpm
-
-    sudo apt-get install php-gd
+`sudo systemctl restart php7.0-fpm`
 
 ## Misc
+
+#### Install wp-cli
+
+`curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar`
+
+`php wp-cli.phar --info`
+
+    chmod +x wp-cli.phar
+    sudo mv wp-cli.phar /usr/local/bin/wp
+
+`wp --info`
+
+`wp package install trepmal/wp-revisions-cli`
 
 #### Install utilities
 
     sudo apt install secure-delete
     sudo apt install mailutils
-    sudo apt install apticron
 
 #### Crontab
 
