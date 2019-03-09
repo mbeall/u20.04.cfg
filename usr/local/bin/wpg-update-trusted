@@ -3,24 +3,26 @@
 # Update trusted plugins and themes on all WordPress websites
 #
 
-for path in $(cat /usr/local/sitelist.md)
+for user in $(ls /home)
 do
-  if test -e $path/wp-config.php; then
-    cd $path/html
-    site=$(basename $path)
-    echo $site
+  for site in $(ls /home/$user/public)
+  do
+    if [ -e /home/$user/public/$site/wp-config.php ]; then
+      cd /home/$user/public/$site/html
+      echo $site
 
-    # Update WordPress
-    wp core update
-    wp core update-db
+      # Update WordPress
+      wp core update
+      wp core update-db
 
-    # Update trusted plugins
-    wp plugin update akismet jetpack vaultpress wp-super-cache
+      # Update trusted plugins
+      wp plugin update akismet jetpack vaultpress wp-super-cache
 
-    # Update trusted themes
-    wp theme update twentyseventeen twentysixteen
-    
-    echo
-  fi
+      # Update trusted themes
+      wp theme update twentynineteen twentyseventeen
+
+      cd
+      echo
+    fi
+  done
 done
-
