@@ -277,7 +277,6 @@ Select option `2` when prompted.
 
     sudo apt install secure-delete
     sudo apt install mailutils
-    sudo apt install apticron
     
     wp package install trepmal/wp-revisions-cli
 
