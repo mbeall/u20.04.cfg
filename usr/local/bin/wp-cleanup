@@ -9,8 +9,8 @@
 # Delete inactive plugins
 wp plugin delete $(wp plugin list --status=inactive --field=name)
 wp plugin install akismet jetpack wp-super-cache
-  
-# Delete inactive plugins
+
+# Delete inactive themes
 wp theme delete $(wp theme list --status=inactive --field=name)
 wp theme install twentytwentyone
 
