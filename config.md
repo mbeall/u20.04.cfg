@@ -18,7 +18,7 @@ Add `mbeall ALL=(ALL) NOPASSWD: ALL` to bottom
     2600:3c01::a123:b456:c789:d0#### hostname.example.com hostname
 
 #### Add Public Key Authentication
-`ssh-keygen -t rsa -b 4096`
+`ssh-keygen -t ed25519 -C "mbeall@starverte.com"`
 
 #### Add SSH key to https://github.com/settings/keys
 
